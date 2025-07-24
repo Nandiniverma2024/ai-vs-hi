@@ -20,15 +20,16 @@ function App() {
       const resAI = await fetch('http://localhost:5000/translate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input, tone: 'ai' })
+        body: JSON.stringify({ message: input, tone: 'ai', targetLang })
       });
       const dataAI = await resAI.json();
+      setSourceLang(dataAI.detectedLang); // Optional UI update
       setAiResponse(dataAI.translation);
 
       const resHI = await fetch('http://localhost:5000/translate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input, tone: 'hi' })
+        body: JSON.stringify({ message: input, tone: 'hi', targetLang })
       });
       const dataHI = await resHI.json();
       setHiResponse(dataHI.translation);
@@ -41,15 +42,17 @@ function App() {
     setLoading(false);
   };
 
+
   const languages = [
     'Hindi', 'Khariboli', 'Haryanvi', 'Braj Bhasha', 'Bundeli', 'Awadhi',
     'Bagheli', 'Bhojpuri', 'Maithili', 'Magahi', 'Garhwali', 'Kumaoni',
-    'Jaunsari', 'Chhattisgarhi', 'Marwari', 'Kanauji', 'Angika', 'Telugu'
+    'Jaunsari', 'Chhattisgarhi', 'Marwari', 'Kanauji', 'Angika', 'Tamil', 
+    'Telugu', 'Kannada', 'Malayalam', 'Tulu', 'Konkani'
   ];
 
   return (
-    <div className='flex items-center justify-center w-full min-h-screen p-4 bg-gradient-to-br from-gray-900 to-gray-800'>
-      <div className="w-full max-w-3xl p-8 text-white shadow-2xl bg-gray-800/80 backdrop-blur-md rounded-2xl">
+    <div className="flex items-center justify-center w-screen min-h-screen">
+      <div className="w-full max-w-3xl p-8 mx-auto text-white shadow-2xl bg-gray-800/80 backdrop-blur-md rounded-2xl">
         <h1 className="mb-6 text-5xl font-bold text-purple-400">AI vs HI Translator</h1>
 
         <textarea
