@@ -1,4 +1,5 @@
 import { useState } from 'react';
+const BASE_URL = 'https://ai-vs-hi.onrender.com';
 
 function App() {
   const [input, setInput] = useState('');
@@ -17,7 +18,7 @@ function App() {
     setHiResponse('');
 
     try {
-      const resAI = await fetch('http://localhost:5000/translate', {
+      const resAI = await fetch(`${BASE_URL}/translate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input, tone: 'ai', targetLang })
@@ -26,7 +27,7 @@ function App() {
       setSourceLang(dataAI.detectedLang); // Optional UI update
       setAiResponse(dataAI.translation);
 
-      const resHI = await fetch('http://localhost:5000/translate', {
+      const resHI = await fetch(`${BASE_URL}/translate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input, tone: 'hi', targetLang })
