@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 const BASE_URL = 'https://ai-vs-hi.onrender.com';
 
