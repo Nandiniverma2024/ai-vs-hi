@@ -56,7 +56,7 @@ function App() {
     'Hindi', 'Khariboli', 'Haryanvi', 'Braj Bhasha', 'Bundeli', 'Awadhi',
     'Bagheli', 'Bhojpuri', 'Maithili', 'Magahi', 'Garhwali', 'Kumaoni',
     'Jaunsari', 'Chhattisgarhi', 'Marwari', 'Kanauji', 'Angika', 'Tamil', 
-    'Telugu', 'Kannada', 'Malayalam', 'Tulu', 'Konkani',
+    'Telugu', 'Kannada', 'Malayalam', 'Tulu', 'Konkani','Gujarati'
   ];
 
   // JSX Return — This is what renders on screen
