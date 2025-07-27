@@ -1,29 +1,29 @@
 // Importing necessary modules
-import express from 'express';       // Express.js framework for creating the server
-import cors from 'cors';             // Middleware to enable Cross-Origin Resource Sharing
-import bodyParser from 'body-parser';// Middleware to parse incoming JSON request bodies
-import fetch from 'node-fetch';      // For making API calls (fetch is not built-in in Node.js)
-import dotenv from 'dotenv';         // For loading environment variables from .env file
-dotenv.config();                     // Load environment variables into process.env
+import express from 'express';       
+import cors from 'cors';             
+import bodyParser from 'body-parser';
+import fetch from 'node-fetch';      
+import dotenv from 'dotenv';         
+dotenv.config();                     
 
-const app = express();               // Initialize Express app
+const app = express();              
 
 // Middleware
-app.use(cors());                     // Enable CORS for all incoming requests
-app.use(bodyParser.json());          // Parse JSON bodies from incoming requests
+app.use(cors());                     
+app.use(bodyParser.json());          
 
-const PORT = process.env.PORT || 5000; // Use PORT from .env, or default to 5000 if not specified
+const PORT = process.env.PORT || 5000; 
 
-// Route: Basic GET request to check if server is running
+// GET request to check if server is running
 app.get('/', (_, res) => {
-  res.send('AI vs HI Translator Backend is Running'); // Simple health check message
+  res.send('AI vs HI Translator Backend is Running');
 });
 
-// Route: POST request for translation
+// POST request for translation
 app.post('/translate', async (req, res) => {
-  const { message, tone, targetLang } = req.body; // Extracting fields from request body
+  const { message, tone, targetLang } = req.body; 
 
-  // Validation: Check if required fields are present
+  // Check if required fields are present
   if (!message || !tone || !targetLang) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
